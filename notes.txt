@@ -1,0 +1,117 @@
+PROYECTO COMPLETO CON TAILWIND, REACT-ROUTES,, VITE
+
+1. npm init vite@latest
+name: crm-react
+(completamos todo lo que nos pide)
+
+2. cd crm-react > npm install
+(es mas rapido que create-react-app)
+
+3. Instalar TailwindCSS: npm i autoprefixer postcss tailwindcss
+4. npx tailwindcss init -p
+5. en el config de tailwing agrego la línea: purge: ["index.html", "./src/**/*.jsx"],
+6. en el index.css importo tailwind agregando:
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+7. reinicio el servidor donde corre localhost
+8. agrego clases al body en el index.html <body class="min-h-screen bg-gray-100">
+
+9. ROUTING??? diferentes urls , restingir accesos, proyectos grandes es conveniente el routing.
+React Router: En Version6 se une con ReachRounter, son los creadores de Remix Run
+La Version5 estuvo como 5 años por eso hay mucho mantenimiento
+Gatsby y Next tienen sus propios Routers
+
+Como instalarlo? npm i react-router-dom
+Lo importo en archivo ppal: import {BrowserRouter, Routes, Route } from 'react-router-dom'
+
+10. En Route path digo: si entro al home, que carge el elemento IniciarSesion, si en Route path es /clientes, que carge el elemnto Layout. Son etiquetas de apertura y cierre, si dentro hay etiquetas simples Route, ya no son consideradas como "grupo de rutas" y se consideran rutas anidadas dentro de ese grupo  
+
+    <Route path="/" element={<IniciarSesion/>}>
+       <Route index element={<LoginForm/>} />
+    </Route>
+
+11. En el segundo caso, cuando ingrese a /clientes quiero que cargue el layout y dentro las otras rutas, por lo que dentro de layout tengo que agregar el componente Outlet(que es donde ira el contenido hijo) y poner la propiedad index a la ruta que quiero como principal dentro del layout
+
+12. En la nueva version de react router, al estar agrupadas y pertenecer a grupos, solo agrego el nombre de la nueva pagina, y hereda el layout y el nombre de la master ruta
+
+13.Vamos a trabajar el Layout que es el que mas se va a reutilizar
+
+14. Para que no recargue tambien utilizamos Link tag, pero en vez de href utiliz<amos la palabra "to"
+
+15. useLocation HOOK: oobtengo en un objeto toda la info de la ruta
+
+16. TAILWIND muy buena forma para dar estilo aplicando un ternario :  className={`${ urlActual === "/clientes" ? "text-blue-300" : "text-white"} text-white text-2xl block mt-2 hover:text-blue-300`}
+
+17. LIBRERIAS DE FORMULARIOS: Si vamos a usar formualkrios complejos, una libreria nos ayudaria mucho. 
+Las mas populares Son Formik (yup con herramienta de validacion) y otra es React Hook Formik
+
+Utilizaremos Formik y yup
+>npm i formik yup
+
+18. GOLAZO Tailwind: Cuando queremos que una parte de lña pantalla hagascrooll pero el sidebar quede fixed: <div className="md:w-3/4 p-10 md:h-screen overflow-scroll">
+
+19. Guardar datos en state: Utilizamos la API de Formik:
+ 
+ 20. Utilizar YUP (bien documentado) para validar formularios
+
+ 21. JSON SERVER: Crear una REST API. Buena documentacion. Soporta CRUD. Es una excelente forma de trabajar un proyecto sin necesidad de esperar los endpoints del backend.
+ REST represtentional state transfer API. Debe responder a los request de los http. Es una forma ordenada de poner a disposicion los recursos. GET, POST, PUT/PATCH, DELETE
+
+ -Debe contener ciertos endpoints para hacer operaciones CRUD ej.
+ obtener cliente: get clientes/10
+ editar un cliente: PUT /clientes/3
+
+ npm install -g json-server (windows) si es ubuntu agregar sudo al comienzo
+
+ 22.Crear REST API en menos de un minuto: Crear el archivoi db.json en la raiz del proyecto y ahi escribo un json, que ser ami api, mi base de datos: 
+
+ {
+  "clientes": []
+}
+
+(WINDOWS no me dejaba ejecutar archivos ps1, tuve que desde el power shell como administrador ejecutar el siguiente comando: Set-ExecutionPolicy -Scope LocalMachine unrestricted)
+
+Excelente forma para avanzar en el proyecto sin los endpoints del backend. JSON SERVER es apra practicar
+
+>>>PARA CORRER JSON SERVER EJECUTAR EN TERMINAL
+json-server --watch db.json --port 4000
+
+23. Desde el handle submit voy a guardar la informacion en el JSON. JsonServer funciona como un backend real
+
+(En las universidades han discho que try catch consume muchos recursos en JAVA, no es el caso de JS)
+
+24. Limpiar el formulario o redireccionarlos para que no se puede poner varias veces el submit
+
+25.Una vez agregada la ruta hacia ver cliente, ahora vamos a utilizar otro util hook: 
+
+import {useParams} from 'react-router-dom'
+const params = useParams()
+me permite ver como parametro la id de cada elemento 
+
+React Router Dom es lo maximo!!!
+
+26. Termine con el de ver cliente, agregando un spinner, y muy interesante como maneja el timeout para mostrar el spinner un segundo y luego los datos,a demas de que tambien valdia si el usuario a ver EXISTE ya que si no existe muestra un mensaje de error., toda esa valdiacion esta junta, muy interesante para estudiarla bien.
+
+27. pasamos a la parte de editar clientes, por lo que copio casi toda la logica del codigo de <VerCliente/> ya que es muy similar el funcionamiento
+
+28. En EDITAR Vamos a hacer que el formualrio comiencxe con los datos del cliente ya cargados, pero lo haremos en el mismo componente de formulario para evitar copiar codigo agregando un atributoa  fomrik ((enableReinitialize={true}) asi que voy a usar default props definiendo un objeto por default, por si el prop no esta presente toma el default prop 
+
+
+29. Ahora toda editar el texto para q no diga agregar cliente en editar cliente
+Nullish coalescing operator (??) es eso que hacemos en vez del ternario, para verificar si existe algun parametro. Si lo de la izquierda existe asigno ese, sino usa el de la derecha
+
+30.Como evitar cuando recargo editar cliente q salga un flash de contenido diciendo agregar cleinte y los placeholder vacios??
+
+voy a usar el state cargando
+
+31.Cuando pongo clinetes/editar/2000 o un numero q no exista, me carga el componente pero dice agregar cliente en vez de e ditar: esto es porque el titulo esta atado al router dom, en cambio el titulo del formulario carga en base a si el objeto tiene algo o no. como arreglarlo: ternarios
+
+32. Como todo el trabajo lo hago sobre el componente formulario, las validaciones y todo eso me valen para todas las otras tareas que hago ya que e stoy sobre el mismo formulario
+
+33. En componente formulakrio se usan muchos ternarios, prestar atencion
+
+34.Hemos hecho varias acciones del CRUD: create-reed-update-DELETE
+vamos a eliminar del dom(state) y de la API
+Desde el inicipo mvamos usar la variable setClientes

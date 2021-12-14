@@ -1,0 +1,68 @@
+{
+  "clientes": [
+    {
+      "nombre": "Gino",
+      "empresa": "DevZeppelin",
+      "email": "devzeppelin.ar@gmail.com",
+      "telefono": "2616708100",
+      "notas": "Este tipo es un maestro de maestros.",
+      "id": 1
+    },
+    {
+      "nombre": "Gino",
+      "empresa": "DevZeppelin",
+      "email": "devzeppelin.ar@gmail.com",
+      "telefono": "2616708100",
+      "notas": "Este tipo es un maestro de maestros.",
+      "id": 2
+    },
+    {
+      "nombre": "Gino",
+      "empresa": "DevZeppelin",
+      "email": "devzeppelin.ar@gmail.com",
+      "telefono": "2616708100",
+      "notas": "Este tipo es un maestro de maestros.",
+      "id": 3
+    },
+    {
+      "nombre": "william",
+      "empresa": "william wallace desig",
+      "email": "willian@karen.com",
+      "telefono": "2618515584",
+      "notas": "este tipo es un culillo\n",
+      "id": 4
+    },
+    {
+      "nombre": "flaco",
+      "empresa": "matias flaco url",
+      "email": "sdsa@sjadid.sad",
+      "telefono": "2564545",
+      "notas": "sasaffsafsafd\n",
+      "id": 5
+    },
+    {
+      "nombre": "matias agustin gonzales raffo",
+      "empresa": "yapeyu y maderas victor",
+      "email": "flacoqlaido@gmail.xom",
+      "telefono": "56489251454551",
+      "notas": "flaco hijo de la chingada perate no te puedo grabar ahoraa",
+      "id": 6
+    },
+    {
+      "nombre": "juan paco",
+      "empresa": "pedro de la mar",
+      "email": "esminombre@asi.com",
+      "telefono": "12345678910",
+      "notas": "",
+      "id": 7
+    },
+    {
+      "nombre": "GINO BRUNO peterson",
+      "empresa": "DevZeppelin",
+      "email": "gini77oo@gmail.com",
+      "telefono": "231321",
+      "notas": "saddsas",
+      "id": 10
+    }
+  ]
+}
