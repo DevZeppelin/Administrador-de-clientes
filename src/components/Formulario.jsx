@@ -35,7 +35,7 @@ const Formulario = ({ cliente, cargando }) => {
       //si existe cliente.id es porque estoy editando cliente
       if (cliente.id) {
         //Editando un registro, todo similar salvo el PUT y la url para el fetch
-        const url = `http://localhost:4000/clientes/${cliente.id}`;
+        const url = `${import.meta.env.VITE_API_URL}/${cliente.id}`;
         respuesta = await fetch(url, {
           method: "PUT",
           body: JSON.stringify(valores),
@@ -45,7 +45,7 @@ const Formulario = ({ cliente, cargando }) => {
         });
       } else {
         //Agregando un nuevo cliente (si no existe cliente.id entra en este else )
-        const url = "http://localhost:4000/clientes";
+        const url = import.meta.env.VITE_API_URL;
 
         //IMPORTANTE SCOPE: Fuera del eslse yo no tengo acceso a respuesta
 

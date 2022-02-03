@@ -7,7 +7,8 @@ const Inicio = () => {
   useEffect(() => {
     const obtenerClientesAPI = async () => {
       try {
-        const url = "http://localhost:4000/clientes";
+        //const url = "http://localhost:4000/clientes";
+        const url = import.meta.env.VITE_API_URL;
         const respuesta = await fetch(url);
         //con fetch si voy a usar un get no es necesario especificar, si para un put o push
         const resultado = await respuesta.json();
@@ -26,7 +27,7 @@ const Inicio = () => {
     console.log(confirmar)
     if (confirmar){
       try {
-        const url = `http://localhost:4000/clientes/${id}`
+        const url = `${import.meta.env.VITE_API_URL}/${id}`
         const respuesta = await fetch (url, {
           method: 'DELETE'
           //no le pasamos el body xq solo requiere el id para saber cual eliminar

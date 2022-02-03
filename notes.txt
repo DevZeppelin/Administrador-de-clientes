@@ -115,3 +115,33 @@ voy a usar el state cargando
 34.Hemos hecho varias acciones del CRUD: create-reed-update-DELETE
 vamos a eliminar del dom(state) y de la API
 Desde el inicipo mvamos usar la variable setClientes
+
+35. La pagina My JSON Server (https://my-json-server.typicode.com/)
+
+nos dice que con esa direccion, usuario y repo, va aser suficiente:
+https://my-json-server.typicode.com/DevZeppelin/Administrador-de-clientes
+
+Ahora puedo detener mi servidor local y apuntar hacia la API, para eso necesito definir variables de entorno,
+localhost sigue siendo el entorno de desarrollo, y la web donde subi la api es el entonrno de produccion
+
+Variables de entorno son variables que vamos a encontrar en diferentes entornos ya sea para desarrollo o para produccion
+Las variables de produccion se manejas diferentes en cada framework
+En Vite: 
+.env (se carga siempre)
+.env.local (es ignorado por git)
+.env.[mode] (produccion o desarrollo)
+.env.[mode].local tambien sera ignorado por git
+
+vite nos da esta variables de ejemplo:
+DB_PASSWORD=foobar
+VITE_SOME_KEY=123
+y nos dice que para acceder: Only VITE_SOME_KEY will be exposed as import.meta.env.VITE_SOME_KEY to your client source code, but DB_PASSWORD will not. En App.js....console.log(import.meta.env) puedo ver en consola que aparece un opbjeto que solo me meustra lo que empieza con VITE_ pero no el password
+
+como porbar modo produccion??
+en una terminal ejecutar npm run build (crea el build de produccion) crea una carpeta dist
+>npm run serve (crea un preview en el puerto 5000) serve simula que esta en produccion, excelente para ahcer pruebas, 
+
+en run dev me sale el objeto con la variable .env.development.local 
+en run preview me sale el objeto con la variable .env.production.local  (antes debo hacer el build)
+
+el build se genera dependiendo el proyecto
